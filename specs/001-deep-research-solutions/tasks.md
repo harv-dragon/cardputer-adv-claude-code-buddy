@@ -61,13 +61,13 @@
 
 ### Implementation for User Story 1
 
-- [ ] T014 [US1] Create `poc/usb-composite/` directory with minimal PlatformIO project that depends only on TinyUSB and ESP32-S3 board support (no M5Cardputer lib yet)
-- [ ] T015 [US1] Implement USB device descriptor (device, configuration, IAD) in `poc/usb-composite/src/usb_descriptors.c` per contracts/usb-descriptor.md — UAC2 Audio Control IF 0, Audio Streaming IF 1, HID Keyboard IF 2, CDC ACM IF 3
-- [ ] T016 [P] [US1] Implement UAC2 audio control + streaming descriptors (clock source, input terminal mic, output terminal USB, isochronous IN endpoint Alt 0/1) in `poc/usb-composite/src/usb_descriptors.c`
-- [ ] T017 [P] [US1] Implement HID keyboard descriptor and 8-byte boot keyboard report in `poc/usb-composite/src/hid_descriptors.c` per contracts/hid-reports.md
-- [ ] T018 [P] [US1] Implement CDC ACM descriptors (header, ACM, union, call management, notification EP, bulk IN/OUT) in `poc/usb-composite/src/usb_descriptors.c` per contracts/usb-descriptor.md
-- [ ] T019 [US1] Implement TinyUSB device task and main loop in `poc/usb-composite/src/main.cpp` — initialize TinyUSB, handle UAC2 callbacks (stub with silence), HID report loop (send test key every 5s), CDC serial echo
-- [ ] T020 [US1] Configure PlatformIO build flags in `poc/usb-composite/platformio.ini` for TinyUSB with CFG_TUD_AUDIO=1, CFG_TUD_HID=1, CFG_TUD_CDC=1 on ESP32-S3
+- [x] T014 [US1] Create `poc/usb-composite/` directory with minimal PlatformIO project that depends only on TinyUSB and ESP32-S3 board support (no M5Cardputer lib yet)
+- [x] T015 [US1] Implement USB device descriptor (device, configuration, IAD) in `poc/usb-composite/src/usb_descriptors.c` per contracts/usb-descriptor.md — UAC2 Audio Control IF 0, Audio Streaming IF 1, HID Keyboard IF 2, CDC ACM IF 3
+- [x] T016 [P] [US1] Implement UAC2 audio control + streaming descriptors (clock source, input terminal mic, output terminal USB, isochronous IN endpoint Alt 0/1) in `poc/usb-composite/src/usb_descriptors.c`
+- [x] T017 [P] [US1] Implement HID keyboard descriptor and 8-byte boot keyboard report in `poc/usb-composite/src/hid_descriptors.c` per contracts/hid-reports.md
+- [x] T018 [P] [US1] Implement CDC ACM descriptors (header, ACM, union, call management, notification EP, bulk IN/OUT) in `poc/usb-composite/src/usb_descriptors.c` per contracts/usb-descriptor.md
+- [x] T019 [US1] Implement TinyUSB device task and main loop in `poc/usb-composite/src/main.cpp` — initialize TinyUSB, handle UAC2 callbacks (stub with silence), HID report loop (send test key every 5s), CDC serial echo
+- [x] T020 [US1] Configure PlatformIO build flags in `poc/usb-composite/platformio.ini` for TinyUSB with CFG_TUD_AUDIO=1, CFG_TUD_HID=1, CFG_TUD_CDC=1 on ESP32-S3
 - [ ] T021 [US1] Build, flash to Cardputer-Adv, and verify macOS enumeration: `system_profiler SPUSBDataType` shows composite device with Audio + HID + CDC interfaces
 - [ ] T022 [US1] Verify HID keyboard: press Cardputer keys → characters appear in macOS text editor
 - [ ] T023 [US1] Verify CDC serial: `screen /dev/tty.usbmodem* 115200` → send test message → receive echo
@@ -85,14 +85,14 @@
 
 ### Implementation for User Story 2
 
-- [ ] T025 [US2] Create `poc/es8311-capture/` directory extending the USB composite POC with ES8311 + I2S capture support
-- [ ] T026 [US2] Configure I2C bus (GPIO8 SDA, GPIO9 SCL) and verify ES8311 responds at address 0x18 — read CHIP_ID register (0x2E) in `poc/es8311-capture/src/es8311_init.cpp`
-- [ ] T027 [US2] Implement ES8311 ADC initialization: clock config for 16kHz, power-up ADC, set I2S format (Philips 16-bit), configure PGA gain +30dB, enable mic bias, unmute ADC — in `poc/es8311-capture/src/es8311_init.cpp`
-- [ ] T028 [P] [US2] Configure ESP32-S3 I2S in RX master mode (BCLK=GPIO41, WS=GPIO43, DIN=GPIO46) for 16-bit 16kHz mono capture with 4 DMA descriptors × 256 samples in `poc/es8311-capture/src/i2s_capture.cpp`
-- [ ] T029 [US2] Implement PCM ring buffer (1024 samples, lock-free atomic read/write pointers) in `poc/es8311-capture/src/ring_buffer.h`
-- [ ] T030 [US2] Connect I2S RX DMA callback → ring buffer write in `poc/es8311-capture/src/i2s_capture.cpp`
-- [ ] T031 [US2] Implement UAC2 TX callback: read from ring buffer → `tud_audio_n_write()` → 16 samples per 1ms frame in `poc/es8311-capture/src/uac2_mic.cpp`
-- [ ] T032 [US2] Implement USB audio alternate setting handling: Alt 0 = stop I2S + stop streaming, Alt 1 = start I2S + start streaming in `poc/es8311-capture/src/uac2_mic.cpp`
+- [x] T025 [US2] Create `poc/es8311-capture/` directory extending the USB composite POC with ES8311 + I2S capture support
+- [x] T026 [US2] Configure I2C bus (GPIO8 SDA, GPIO9 SCL) and verify ES8311 responds at address 0x18 — read CHIP_ID register (0x2E) in `poc/es8311-capture/src/es8311_init.cpp`
+- [x] T027 [US2] Implement ES8311 ADC initialization: clock config for 16kHz, power-up ADC, set I2S format (Philips 16-bit), configure PGA gain +30dB, enable mic bias, unmute ADC — in `poc/es8311-capture/src/es8311_init.cpp`
+- [x] T028 [P] [US2] Configure ESP32-S3 I2S in RX master mode (BCLK=GPIO41, WS=GPIO43, DIN=GPIO46) for 16-bit 16kHz mono capture with 4 DMA descriptors × 256 samples in `poc/es8311-capture/src/i2s_capture.cpp`
+- [x] T029 [US2] Implement PCM ring buffer (1024 samples, lock-free atomic read/write pointers) in `poc/es8311-capture/src/ring_buffer.h`
+- [x] T030 [US2] Connect I2S RX DMA callback → ring buffer write in `poc/es8311-capture/src/i2s_capture.cpp`
+- [x] T031 [US2] Implement UAC2 TX callback: read from ring buffer → `tud_audio_n_write()` → 16 samples per 1ms frame in `poc/es8311-capture/src/uac2_mic.cpp`
+- [x] T032 [US2] Implement USB audio alternate setting handling: Alt 0 = stop I2S + stop streaming, Alt 1 = start I2S + start streaming in `poc/es8311-capture/src/uac2_mic.cpp`
 - [ ] T033 [US2] Build, flash, and verify: macOS System Settings → Sound → Input shows Cardputer-Adv with active level meter when speaking
 - [ ] T034 [US2] Measure audio pipeline latency: record tap-test (tap mic → observe waveform in Audacity) — document in `poc/es8311-capture/LATENCY.md`
 - [ ] T035 [US2] Measure audio quality: record 10s of test speech, compare SNR to MacBook built-in mic — document in `poc/es8311-capture/QUALITY.md`
@@ -110,14 +110,14 @@
 
 ### Implementation for User Story 3
 
-- [ ] T037 [US3] Create `poc/display-ui/` directory extending the USB composite POC with TFT_eSPI display support
-- [ ] T038 [US3] Configure TFT_eSPI for Cardputer-Adv ST7789V2 (CS=37, DC=34, MOSI=35, SCLK=36, BL=38, RST=33, 240×135, 40MHz SPI) in `poc/display-ui/src/display_config.h`
-- [ ] T039 [US3] Implement Idle Mode screen: connection status icon, battery percentage bar, clock (HH:MM), device name — in `poc/display-ui/src/ui_idle.cpp`
-- [ ] T040 [US3] Implement Agent Status Mode screen: agent name, state badge (colored), runtime counter, token count, last 3 output lines with scrolling — in `poc/display-ui/src/ui_agent_status.cpp`
-- [ ] T041 [P] [US3] Implement Audio VU Mode screen: recording indicator, VU meter bar (animated), dBFS level text — in `poc/display-ui/src/ui_audio_vu.cpp`
-- [ ] T042 [P] [US3] Implement Permission Overlay: full-screen red pulsing border, permission hint text, "[SPACE] Approve [ESC] Deny" prompt — in `poc/display-ui/src/ui_permission.cpp`
-- [ ] T043 [US3] Implement display mode switcher with priority: waiting_permission > error > running > audio_input > idle — in `poc/display-ui/src/ui_mode_manager.cpp`
-- [ ] T044 [US3] Implement dirty rectangle tracking for partial screen updates (only redraw changed text/regions) in `poc/display-ui/src/ui_mode_manager.cpp`
+- [x] T037 [US3] Create `poc/display-ui/` directory extending the USB composite POC with TFT_eSPI display support
+- [x] T038 [US3] Configure TFT_eSPI for Cardputer-Adv ST7789V2 (CS=37, DC=34, MOSI=35, SCLK=36, BL=38, RST=33, 240×135, 40MHz SPI) in `poc/display-ui/src/display_config.h`
+- [x] T039 [US3] Implement Idle Mode screen: connection status icon, battery percentage bar, clock (HH:MM), device name — in `poc/display-ui/src/ui_idle.cpp`
+- [x] T040 [US3] Implement Agent Status Mode screen: agent name, state badge (colored), runtime counter, token count, last 3 output lines with scrolling — in `poc/display-ui/src/ui_agent_status.cpp`
+- [x] T041 [P] [US3] Implement Audio VU Mode screen: recording indicator, VU meter bar (animated), dBFS level text — in `poc/display-ui/src/ui_audio_vu.cpp`
+- [x] T042 [P] [US3] Implement Permission Overlay: full-screen red pulsing border, permission hint text, "[SPACE] Approve [ESC] Deny" prompt — in `poc/display-ui/src/ui_permission.cpp`
+- [x] T043 [US3] Implement display mode switcher with priority: waiting_permission > error > running > audio_input > idle — in `poc/display-ui/src/ui_mode_manager.cpp`
+- [x] T044 [US3] Implement dirty rectangle tracking for partial screen updates (only redraw changed text/regions) in `poc/display-ui/src/ui_mode_manager.cpp`
 - [ ] T045 [US3] Integrate with mock status data: cycle through all 4 states with 5-second intervals — measure FPS via frame counter and free heap via `esp_get_free_heap_size()` in `poc/display-ui/src/main.cpp`
 - [ ] T046 [US3] Verify: all 3 modes render correctly, FPS ≥15, heap >64KB, text readable at arm's length, transitions are flicker-free — document in `poc/display-ui/RESULTS.md`
 
@@ -133,13 +133,13 @@
 
 ### Implementation for User Story 4
 
-- [ ] T047 [US4] Extend POC with CDC serial JSON protocol support in `poc/host-comm/` (copy working USB composite POC)
-- [ ] T048 [US4] Implement newline-delimited JSON frame reader on CDC serial RX: buffer bytes until `\n`, parse JSON, validate `seq` field — in `poc/host-comm/src/protocol_parser.cpp`
-- [ ] T049 [P] [US4] Implement JSON→AgentStatus struct parser for all 4 message types (status, permission, log, config) using ArduinoJson v7 with schema validation — in `poc/host-comm/src/protocol_parser.cpp`
-- [ ] T050 [P] [US4] Implement dropped frame detection: track `seq` monotonic counter, log gaps, trigger full display refresh when state changes across dropped frames — in `poc/host-comm/src/protocol_parser.cpp`
-- [ ] T051 [P] [US4] Implement host disconnect detection: 5-second data timeout → set state to error with "Host disconnected" message — in `poc/host-comm/src/host_monitor.cpp`
-- [ ] T052 [US4] Connect protocol parser output → display mode manager to update UI on each valid status message in `poc/host-comm/src/main.cpp`
-- [ ] T053 [US4] Create `tools/test_sender.py`: Python script that connects to CDC serial port and sends mock AgentStatus JSON frames (cycle through all 4 states, increment seq) at configurable rate
+- [x] T047 [US4] Extend POC with CDC serial JSON protocol support in `poc/host-comm/` (copy working USB composite POC)
+- [x] T048 [US4] Implement newline-delimited JSON frame reader on CDC serial RX: buffer bytes until `\n`, parse JSON, validate `seq` field — in `poc/host-comm/src/protocol_parser.cpp`
+- [x] T049 [P] [US4] Implement JSON→AgentStatus struct parser for all 4 message types (status, permission, log, config) using ArduinoJson v7 with schema validation — in `poc/host-comm/src/protocol_parser.cpp`
+- [x] T050 [P] [US4] Implement dropped frame detection: track `seq` monotonic counter, log gaps, trigger full display refresh when state changes across dropped frames — in `poc/host-comm/src/protocol_parser.cpp`
+- [x] T051 [P] [US4] Implement host disconnect detection: 5-second data timeout → set state to error with "Host disconnected" message — in `poc/host-comm/src/host_monitor.cpp`
+- [x] T052 [US4] Connect protocol parser output → display mode manager to update UI on each valid status message in `poc/host-comm/src/main.cpp`
+- [x] T053 [US4] Create `tools/test_sender.py`: Python script that connects to CDC serial port and sends mock AgentStatus JSON frames (cycle through all 4 states, increment seq) at configurable rate
 - [ ] T054 [US4] End-to-end latency test: test_sender.py sends message with timestamp → device receives and renders → measure delta — document in `poc/host-comm/LATENCY.md` (target <200ms)
 - [ ] T055 [US4] Reliability test: test_sender.py sends 1000 messages at 10ms intervals → verify device receives all with correct seq order → document in `poc/host-comm/RELIABILITY.md`
 - [ ] T056 [US4] Disconnect/reconnect test: unplug USB → verify device shows "Disconnected" → replug → verify status resumes without reset — document in `poc/host-comm/RECOVERY.md`
