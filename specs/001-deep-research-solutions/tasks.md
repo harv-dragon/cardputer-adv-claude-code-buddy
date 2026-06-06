@@ -156,16 +156,16 @@
 
 ### Implementation for User Story 5
 
-- [ ] T057 [US5] Fork lshaf/unigeek to `firmware/` directory and create `cardputer-adv-ccb` branch
-- [ ] T058 [US5] Remove unneeded features from UniGeek fork per plan.md Section 4: BadUSB, Wi-Fi tools, WebAuthn, IR apps, password manager, BLE HID, non-Cardputer-Adv board targets, utility apps — verify each removal compiles
+- [x] T057 [US5] Fork lshaf/unigeek to `firmware/` directory and create `cardputer-adv-ccb` branch
+- [x] T058 [US5] Remove unneeded features from UniGeek fork per plan.md Section 4: BadUSB, Wi-Fi tools, WebAuthn, IR apps, password manager, BLE HID, non-Cardputer-Adv board targets, utility apps — verify each removal compiles
 - [ ] T059 [US5] Measure binary size after strip-down: build and record .bin size — verify <700KB target — document in `firmware/SIZE_REPORT.md`
-- [ ] T060 [P] [US5] Switch UniGeek USB stack from Arduino USB to TinyUSB: update platformio.ini with CFG_TUD flags, migrate HID keyboard to TinyUSB HID API in `firmware/src/usb_stack/hid_kbd.cpp`
-- [ ] T061 [P] [US5] Add UAC2 microphone module to firmware: integrate TinyUSB UAC2 descriptors from POC T015-T018, I2S capture from POC T026-T030, UAC2 callbacks from POC T031-T032 into `firmware/src/usb_stack/` and `firmware/src/audio_pipeline/`
-- [ ] T062 [P] [US5] Add CDC serial protocol module to firmware: integrate JSON parser from POC T048-T051 into `firmware/src/host_comm/`
-- [ ] T063 [P] [US5] Add display UI module to firmware: integrate UI rendering from POC T039-T044 into `firmware/src/display_ui/`
+- [x] T060 [P] [US5] Switch UniGeek USB stack from Arduino USB to TinyUSB: update platformio.ini with CFG_TUD flags, migrate HID keyboard to TinyUSB HID API in `firmware/src/usb_stack/hid_kbd.cpp`
+- [x] T061 [P] [US5] Add UAC2 microphone module to firmware: integrate TinyUSB UAC2 descriptors from POC T015-T018, I2S capture from POC T026-T030, UAC2 callbacks from POC T031-T032 into `firmware/src/usb_stack/` and `firmware/src/audio_pipeline/`
+- [x] T062 [P] [US5] Add CDC serial protocol module to firmware: integrate JSON parser from POC T048-T051 into `firmware/src/host_comm/`
+- [x] T063 [P] [US5] Add display UI module to firmware: integrate UI rendering from POC T039-T044 into `firmware/src/display_ui/`
 - [ ] T064 [US5] Measure final binary size and free heap: build complete firmware → record .bin size → flash → read `esp_get_free_heap_size()` → verify <1MB and >64KB — document in `firmware/SIZE_REPORT.md`
 - [ ] T065 [US5] Run full feature regression: USB HID keyboard → works, ES8311 speaker (if any) → works, ST7789 display → works, battery ADC → works, SD card → works — document in `firmware/REGRESSION.md`
-- [ ] T066 [US5] Document framework evaluation: compare Arduino (UniGeek base) vs ESP-IDF (pure) vs Hybrid (Arduino-as-Component) with scored criteria per spec.md Section 5 — final recommendation in `firmware/FRAMEWORK_DECISION.md`
+- [x] T066 [US5] Document framework evaluation: compare Arduino (UniGeek base) vs ESP-IDF (pure) vs Hybrid (Arduino-as-Component) with scored criteria per spec.md Section 5 — final recommendation in `firmware/FRAMEWORK_DECISION.md`
 
 **Checkpoint**: UniGeek-based firmware proven viable with all modules integrated
 
@@ -175,14 +175,14 @@
 
 **Purpose**: Synthesize all research findings, POC results, and design artifacts into a comprehensive Product Requirements Document and final Execution Plan
 
-- [ ] T067 [P] Write PRD (Product Requirements Document) synthesizing all research: problem statement, user personas, product overview, functional requirements, non-functional requirements, technical architecture, and success metrics — save to `specs/001-deep-research-solutions/PRD.md`
-- [ ] T068 [P] Finalize execution plan with POC-validated estimates: update plan.md Phase 1-3 timelines with actual POC results, revise risk register based on POC findings, add go/no-go decision criteria for each phase
-- [ ] T069 [P] Generate bill of materials and dependencies: list all libraries with versions validated during POCs, all tools required, all reference repos with commit hashes — save to `specs/001-deep-research-solutions/BOM.md`
-- [ ] T070 Create architecture decision records (ADR) for the 10 key decisions from research.md: decision title, status, context, decision, consequences — save to `specs/001-deep-research-solutions/decisions/` (one file per decision)
-- [ ] T071 Update quickstart.md with lessons learned from POC execution: any platform-specific gotchas, troubleshooting additions, verified command sequences
-- [ ] T072 [P] Generate final research summary: one-page executive summary of all findings, recommended architecture stack, confidence level for each decision (High/Medium/Low based on POC validation) — save to `specs/001-deep-research-solutions/SUMMARY.md`
-- [ ] T073 Validate all generated documents pass spec quality checklist (specs/001-deep-research-solutions/checklists/requirements.md) — fix any regressions
-- [ ] T074 Create handoff document for firmware implementation phase: what's decided, what's POC-validated, what still needs validation, reference code pointers, known issues — save to `specs/001-deep-research-solutions/HANDOFF.md`
+- [x] T067 [P] Write PRD (Product Requirements Document) synthesizing all research: problem statement, user personas, product overview, functional requirements, non-functional requirements, technical architecture, and success metrics — save to `specs/001-deep-research-solutions/PRD.md`
+- [x] T068 [P] Finalize execution plan with POC-validated estimates: update plan.md Phase 1-3 timelines with actual POC results, revise risk register based on POC findings, add go/no-go decision criteria for each phase
+- [x] T069 [P] Generate bill of materials and dependencies: list all libraries with versions validated during POCs, all tools required, all reference repos with commit hashes — save to `specs/001-deep-research-solutions/BOM.md`
+- [x] T070 Create architecture decision records (ADR) for the 10 key decisions from research.md: decision title, status, context, decision, consequences — save to `specs/001-deep-research-solutions/decisions/` (one file per decision)
+- [x] T071 Update quickstart.md with lessons learned from POC execution: any platform-specific gotchas, troubleshooting additions, verified command sequences
+- [x] T072 [P] Generate final research summary: one-page executive summary of all findings, recommended architecture stack, confidence level for each decision (High/Medium/Low based on POC validation) — save to `specs/001-deep-research-solutions/SUMMARY.md`
+- [x] T073 Validate all generated documents pass spec quality checklist (specs/001-deep-research-solutions/checklists/requirements.md) — fix any regressions
+- [x] T074 Create handoff document for firmware implementation phase: what's decided, what's POC-validated, what still needs validation, reference code pointers, known issues — save to `specs/001-deep-research-solutions/HANDOFF.md`
 
 **Checkpoint**: All research deliverables complete — comprehensive solution, PRD, and execution plan ready
 
