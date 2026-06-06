@@ -26,13 +26,13 @@
 
 **Purpose**: Prepare development environment and clone reference repositories for analysis
 
-- [ ] T001 Install PlatformIO and ESP32-S3 toolchain per quickstart.md prerequisites
-- [ ] T002 [P] Clone lshaf/unigeek to `poc/unigeek-base/` and verify it builds for Cardputer-Adv target
-- [ ] T003 [P] Clone atomic14/esp32-usb-uac-experiments to `poc/uac-reference/` and extract UAC2 descriptor files
-- [ ] T004 [P] Clone probadhabishayee/INMP441-with-ESP32-S3-USB-Microphone to `poc/i2s-mic-reference/` and extract I2S-to-UAC2 data flow pattern
-- [ ] T005 [P] Clone anthropics/claude-desktop-buddy to `poc/buddy-reference/` and extract state machine + protocol schema
-- [ ] T006 Verify macOS environment: `system_profiler SPUSBDataType`, MacWhisper installed, Python 3.11+ with pyserial
-- [ ] T007 Install Python test dependencies: `pip install pyserial` and create `tools/test_sender.py` skeleton
+- [x] T001 Install PlatformIO and ESP32-S3 toolchain per quickstart.md prerequisites
+- [x] T002 [P] Clone lshaf/unigeek to `poc/unigeek-base/` and verify it builds for Cardputer-Adv target
+- [x] T003 [P] Clone atomic14/esp32-usb-uac-experiments to `poc/uac-reference/` and extract UAC2 descriptor files
+- [x] T004 [P] Clone probadhabishayee/INMP441-with-ESP32-S3-USB-Microphone to `poc/i2s-mic-reference/` and extract I2S-to-UAC2 data flow pattern (repo not found — extracted patterns from atomic14 instead)
+- [x] T005 [P] Clone anthropics/claude-desktop-buddy to `poc/buddy-reference/` and extract state machine + protocol schema
+- [x] T006 Verify macOS environment: `system_profiler SPUSBDataType`, MacWhisper installed, Python 3.11+ with pyserial
+- [x] T007 Install Python test dependencies: `pip install pyserial` and create `tools/test_sender.py` skeleton
 
 ---
 
@@ -42,12 +42,12 @@
 
 **⚠️ CRITICAL**: No user story POC can begin until this phase is complete
 
-- [ ] T008 Analyze lshaf/unigeek codebase structure — document in `poc/unigeek-base/ANALYSIS.md`: module organization, build system, key APIs (M5Cardputer, TFT_eSPI), entry point, FreeRTOS usage, binary size per feature
-- [ ] T009 [P] Map Cardputer-Adv GPIO assignments from UniGeek pin definitions and cross-reference with M5Stack schematics — document in `poc/unigeek-base/PINMAP.md`
-- [ ] T010 [P] Extract USB HID implementation from UniGeek — identify where USB mode is configured, how HID reports are generated, and how to switch from Arduino USB stack to TinyUSB — document in `poc/unigeek-base/USB_ANALYSIS.md`
-- [ ] T011 [P] Extract ES8311 audio implementation from UniGeek — identify I2S config, codec init sequence, and determine if ADC/mic path exists or only speaker output — document in `poc/unigeek-base/AUDIO_ANALYSIS.md`
-- [ ] T012 [P] Download and review ES8311 datasheet — document ADC register map, clock configuration, mic bias, PGA gain range, and power-up sequence in `poc/es8311-registers.md`
-- [ ] T013 Identify TinyUSB configuration needed for UAC2 + HID + CDC composite on ESP32-S3 within Arduino framework — document `CFG_TUD_*` flags, endpoint budget, and descriptor layout in `poc/tinyusb-config.md`
+- [x] T008 Analyze lshaf/unigeek codebase structure — document in `poc/unigeek-base/ANALYSIS.md`: module organization, build system, key APIs (M5Cardputer, TFT_eSPI), entry point, FreeRTOS usage, binary size per feature
+- [x] T009 [P] Map Cardputer-Adv GPIO assignments from UniGeek pin definitions and cross-reference with M5Stack schematics — document in `poc/unigeek-base/PINMAP.md`
+- [x] T010 [P] Extract USB HID implementation from UniGeek — identify where USB mode is configured, how HID reports are generated, and how to switch from Arduino USB stack to TinyUSB — document in `poc/unigeek-base/USB_ANALYSIS.md`
+- [x] T011 [P] Extract ES8311 audio implementation from UniGeek — identify I2S config, codec init sequence, and determine if ADC/mic path exists or only speaker output — document in `poc/unigeek-base/AUDIO_ANALYSIS.md`
+- [x] T012 [P] Download and review ES8311 datasheet — document ADC register map, clock configuration, mic bias, PGA gain range, and power-up sequence in `poc/es8311-registers.md`
+- [x] T013 Identify TinyUSB configuration needed for UAC2 + HID + CDC composite on ESP32-S3 within Arduino framework — document `CFG_TUD_*` flags, endpoint budget, and descriptor layout in `poc/tinyusb-config.md`
 
 **Checkpoint**: Foundation ready — all user story POCs can now proceed in parallel
 
